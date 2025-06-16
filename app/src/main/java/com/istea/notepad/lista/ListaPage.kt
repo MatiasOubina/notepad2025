@@ -1,29 +1,25 @@
-package com.istea.notepad.detalle
+package com.istea.notepad.lista
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.istea.notepad.Nota
 
-//Sirve para conectar e instanciar  tanto el viewModel como el view
-
 @Composable
-fun DetallePage(
+fun ListaPage(
     navController: NavController,
-    nota: Nota
+    listaDeNotas: List<Nota>,
 ){
     //instanciamos el viewModel
     val viewModel = viewModel {
-        DetalleViewModel(
-            nota = nota,
-            navController = navController
+        ListaViewModel(
+            navController = navController,
+            listaDeNotas = listaDeNotas
         )
     }
 
     //Pasamos el estado y la intención a la view (viewModel.estado)
-    DetalleView(
-        Modifier,
+    ListaView(
         estado = viewModel.estado,
     ) { intencion ->
         viewModel.ejecutar(intencion)

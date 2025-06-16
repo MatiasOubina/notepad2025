@@ -10,13 +10,16 @@ import com.istea.notepad.Nota
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+//TODOS los ViewModel van a tener un estado (variable observada) y una función ejecutar
+
 class DetalleViewModel(
     val nota: Nota,
     val navController: NavController? = null
 ): ViewModel(){
 
-    var estado by mutableStateOf<DetalleEstado>(DetalleEstado.Vacio)
+    var estado by mutableStateOf<DetalleEstado>(DetalleEstado.Vacio) //Variable observada
 
+    //recibe la intención
     fun ejecutar(intencion: DetalleIntencion){
         when(intencion){
             DetalleIntencion.IrParaAtras -> irParaAtras()
